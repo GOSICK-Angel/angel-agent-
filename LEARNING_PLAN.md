@@ -144,22 +144,22 @@ Good UX is what separates a tool from a toy.
 Claude Code spawns sub-agents for complex tasks. This is a key architecture pattern.
 
 **Tasks:**
-- [ ] Implement agent spawning (main agent creates child agents for subtasks)
-- [ ] Build a simple message passing system between agents
-- [ ] Add parallel tool execution for independent operations
-- [ ] Implement agent isolation (each sub-agent has its own context)
+- [x] Implement agent spawning (main agent creates child agents for subtasks)
+- [x] Build a simple message passing system between agents
+- [x] Add parallel tool execution for independent operations
+- [x] Implement agent isolation (each sub-agent has its own context)
 
-**Deliverable:** `src/agents/` - Multi-agent coordination system
+**Deliverable:** `src/agents/` - Sub-agent system with coordinator, parallel execution, and 24 tests ✅
 
 ### 5.2 Memory & Persistence
 
 **Tasks:**
-- [ ] Implement conversation history persistence (save/resume sessions)
-- [ ] Build a project memory system (remember key facts across sessions)
-- [ ] Add a CLAUDE.md-like configuration file reader
-- [ ] Implement caching for expensive operations (file reads, command results)
+- [x] Implement conversation history persistence (save/resume sessions)
+- [x] Build a project memory system (remember key facts across sessions)
+- [x] Add a CLAUDE.md-like configuration file reader
+- [x] Implement caching for expensive operations (file reads, command results)
 
-**Deliverable:** `src/memory/` - Persistence and memory system
+**Deliverable:** `src/memory/` - LRU cache, session persistence, project memory, config reader with 35 tests ✅
 
 ---
 

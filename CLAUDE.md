@@ -13,6 +13,7 @@ npm run dev        # Run src/index.ts (currently starts basic chat REPL)
 npm run chat       # Run Phase 1.1: basic chat loop (no tools)
 npm run agent      # Run Phase 2: agent loop with tools + permissions
 npm run context-agent  # Run Phase 3: agent loop with dynamic context management
+npm run phase5     # Run Phase 5: sub-agents + memory + parallel execution
 npm run build      # TypeScript compilation (tsc) → dist/
 npm run test       # Run tests with Vitest
 ```
@@ -51,6 +52,16 @@ User Input → Append to messages[] → Claude API (system + messages + tools)
 - `src/context/project.ts` — Project detection (CLAUDE.md, package.json, git status)
 - `src/context/system-prompt.ts` — Dynamic system prompt builder (5 modules: identity, tools, style, safety, project)
 - `src/context/manager.ts` — Context window manager (token estimation, tool result compaction, message dropping)
+- `src/agents/types.ts` — Sub-agent types (SubAgent, AgentMessage, SpawnResult)
+- `src/agents/sub-agent.ts` — Create and run isolated sub-agents with own messages[] and LoopGuard
+- `src/agents/parallel.ts` — Parallel tool execution (read-only parallel, write sequential)
+- `src/agents/coordinator.ts` — AgentCoordinator: spawn, run, message routing between agents
+- `src/memory/types.ts` — Memory types (SessionData, ProjectFact, CacheEntry, CacheConfig)
+- `src/memory/cache.ts` — LRU cache with TTL (Map-based, lazy expiry)
+- `src/memory/session.ts` — Session persistence (save/load/list/delete JSON files)
+- `src/memory/project-memory.ts` — Key-value fact store per project (immutable operations)
+- `src/memory/config-reader.ts` — Read .angel-agent.md config files (markdown section parser)
+- `src/core/agent-loop-phase5.ts` — Phase 5: integrates sub-agents, parallel execution, memory, sessions
 - `src/index.ts` — Entry point, currently imports agent-loop
 
 ### Key Design Decisions
@@ -83,5 +94,7 @@ src/
 - **Zod** for tool input validation
 
 ## Learning Materials
+
+The `learn/` directory contains Chinese-language tutorials explaining each phase (phase-1 through phase-5). These are reference docs, not executable code.
 
 The `learn/` directory contains Chinese-language tutorials explaining each phase (phase-1, phase-2, phase-3). These are reference docs, not executable code.

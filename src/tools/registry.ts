@@ -16,6 +16,17 @@ export class ToolRegistry {
     return Array.from(this.tools.values());
   }
 
+  filter(names: string[]): ToolRegistry {
+    const filtered = new ToolRegistry();
+    for (const name of names) {
+      const tool = this.tools.get(name);
+      if (tool) {
+        filtered.register(tool);
+      }
+    }
+    return filtered;
+  }
+
   toApiFormat(): Anthropic.Tool[] {
     return this.getAll().map((tool) => ({
       name: tool.name,
