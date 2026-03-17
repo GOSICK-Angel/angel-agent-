@@ -11,7 +11,8 @@ Angel Agent is a learning project that builds a Claude Code-like AI agent from s
 ```bash
 npm run dev        # Run src/index.ts (currently starts basic chat REPL)
 npm run chat       # Run Phase 1.1: basic chat loop (no tools)
-npm run agent      # Run Phase 1.2: agent loop with read_file + list_directory tools
+npm run agent      # Run Phase 2: agent loop with tools + permissions
+npm run context-agent  # Run Phase 3: agent loop with dynamic context management
 npm run build      # TypeScript compilation (tsc) → dist/
 npm run test       # Run tests with Vitest
 ```
@@ -44,7 +45,12 @@ User Input → Append to messages[] → Claude API (system + messages + tools)
 
 - `src/core/types.ts` — Shared types re-exported from `@anthropic-ai/sdk`, plus `AgentConfig` with defaults (model: `claude-sonnet-4-6`, maxTokens: 4096)
 - `src/core/agent-loop.ts` — Phase 1.1: stateless chat REPL. Manages `messages[]` array, calls Messages API, extracts text blocks
-- `src/core/agent-loop-with-tools.ts` — Phase 1.2: adds tool definitions (`read_file`, `list_directory`), implements the tool execution loop (checks `stop_reason`, dispatches tools via switch, appends `tool_result` as user message, loops until `end_turn`)
+- `src/core/agent-loop-with-tools.ts` — Phase 2: adds tool definitions, implements the tool execution loop with registry + permissions
+- `src/core/agent-loop-with-context.ts` — Phase 3: adds dynamic system prompt (project detection, CLAUDE.md injection, git awareness) and context window management (token estimation, two-level compaction)
+- `src/context/types.ts` — Context types (ProjectContext, SystemPromptConfig, TokenBudget)
+- `src/context/project.ts` — Project detection (CLAUDE.md, package.json, git status)
+- `src/context/system-prompt.ts` — Dynamic system prompt builder (5 modules: identity, tools, style, safety, project)
+- `src/context/manager.ts` — Context window manager (token estimation, tool result compaction, message dropping)
 - `src/index.ts` — Entry point, currently imports agent-loop
 
 ### Key Design Decisions
@@ -74,8 +80,8 @@ src/
 - **@anthropic-ai/sdk** — official Claude SDK (handles auth, streaming, retries, types)
 - **Vitest** for testing
 - **tsx** for development runtime
-- **Zod** planned for tool input validation (not yet added as dependency)
+- **Zod** for tool input validation
 
 ## Learning Materials
 
-The `learn/phase-1/` directory contains Chinese-language tutorials explaining each phase. These are reference docs, not executable code.
+The `learn/` directory contains Chinese-language tutorials explaining each phase (phase-1, phase-2, phase-3). These are reference docs, not executable code.

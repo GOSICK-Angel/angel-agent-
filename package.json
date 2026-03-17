@@ -7,6 +7,7 @@
     "dev": "tsx src/index.ts",
     "chat": "tsx src/core/agent-loop.ts",
     "agent": "tsx src/core/agent-loop-with-tools.ts",
+    "context-agent": "tsx src/core/agent-loop-with-context.ts",
     "build": "tsc",
     "test": "vitest"
   },

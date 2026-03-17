@@ -83,28 +83,28 @@ Claude Code asks for permission before dangerous actions. This is critical.
 The system prompt is what makes an agent behave like a coding assistant vs a chatbot.
 
 **Tasks:**
-- [ ] Study how Claude Code's system prompt is structured (role, rules, tool descriptions)
-- [ ] Build a dynamic system prompt that includes:
+- [x] Study how Claude Code's system prompt is structured (role, rules, tool descriptions)
+- [x] Build a dynamic system prompt that includes:
   - Agent identity and capabilities
   - Tool usage instructions
   - Code style guidelines
   - Safety rules
-- [ ] Add project context injection (read CLAUDE.md, package.json, etc.)
-- [ ] Implement git status awareness
+- [x] Add project context injection (read CLAUDE.md, package.json, etc.)
+- [x] Implement git status awareness
 
-**Deliverable:** `src/context/system-prompt.ts` - Dynamic system prompt builder
+**Deliverable:** `src/context/system-prompt.ts` - Dynamic system prompt builder ✅
 
 ### 3.2 Context Window Management
 
 Real projects have more code than fits in a context window.
 
 **Tasks:**
-- [ ] Understand token counting and context limits
-- [ ] Implement conversation history management (keep, summarize, or drop old messages)
-- [ ] Build a simple context compaction strategy (summarize old tool results)
-- [ ] Add file content truncation for large files
+- [x] Understand token counting and context limits
+- [x] Implement conversation history management (keep, summarize, or drop old messages)
+- [x] Build a simple context compaction strategy (summarize old tool results)
+- [x] Add file content truncation for large files
 
-**Deliverable:** `src/context/manager.ts` - Context window manager
+**Deliverable:** `src/context/manager.ts` - Context window manager ✅
 
 ---
 
