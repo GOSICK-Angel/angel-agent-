@@ -10,6 +10,7 @@
     "context-agent": "tsx src/core/agent-loop-with-context.ts",
     "phase4": "tsx src/core/agent-loop-phase4.ts",
     "phase5": "tsx src/core/agent-loop-phase5.ts",
+    "phase6": "tsx src/core/agent-loop-phase6.ts",
     "build": "tsc",
     "test": "vitest"
   },

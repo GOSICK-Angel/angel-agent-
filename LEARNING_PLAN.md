@@ -168,20 +168,26 @@ Claude Code spawns sub-agents for complex tasks. This is a key architecture patt
 ### 6.1 Error Recovery & Robustness
 
 **Tasks:**
-- [ ] Handle API rate limits and retries with exponential backoff
-- [ ] Graceful degradation when tools fail
-- [ ] Add logging system for debugging agent behavior
-- [ ] Implement max-turns safety limit
+- [x] Handle API rate limits and retries with exponential backoff
+- [x] Graceful degradation when tools fail
+- [x] Add logging system for debugging agent behavior
+- [x] Implement max-turns safety limit
+
+**Deliverable:** `src/resilience/` - Retry with exponential backoff, tool fallback with timeout, structured logger with 19 tests ✅
 
 ### 6.2 Extension Points
 
 **Tasks:**
-- [ ] Plugin system for custom tools
-- [ ] Hook system (pre/post tool execution hooks)
-- [ ] Custom agent definitions (like .claude/agents/)
-- [ ] MCP (Model Context Protocol) server basics
+- [x] Plugin system for custom tools
+- [x] Hook system (pre/post tool execution hooks)
+- [x] Custom agent definitions (like .claude/agents/)
+- [x] MCP (Model Context Protocol) server basics
 
-**Deliverable:** Extensible agent framework
+**Deliverable:** `src/extensions/` - Plugin loader, hook manager, agent definitions, MCP server with 29 tests ✅
+
+### Integration
+
+**Deliverable:** `src/core/agent-loop-phase6.ts` - Full integration with retry, fallback, hooks, plugins, MCP, and max-turns safety ✅
 
 ---
 
