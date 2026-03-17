@@ -17,24 +17,24 @@ User Input -> LLM Reasoning -> Tool Selection -> Tool Execution -> Observation -
 ```
 
 **Tasks:**
-- [ ] Read and understand the ReAct (Reasoning + Acting) paper concept
-- [ ] Implement a basic REPL (Read-Eval-Print Loop) in TypeScript
-- [ ] Connect to Claude API with streaming support
-- [ ] Build the simplest possible chat loop (no tools yet)
+- [x] Read and understand the ReAct (Reasoning + Acting) paper concept
+- [x] Implement a basic REPL (Read-Eval-Print Loop) in TypeScript
+- [x] Connect to Claude API with streaming support
+- [x] Build the simplest possible chat loop (no tools yet)
 
-**Deliverable:** `src/core/agent-loop.ts` - A working chat REPL that talks to Claude
+**Deliverable:** `src/core/agent-loop.ts` - A working chat REPL that talks to Claude ✅
 
 ### 1.2 Tool Use Fundamentals
 
 Claude Code's power comes from tools. Understand how tool use works at the API level.
 
 **Tasks:**
-- [ ] Learn Claude API's tool_use format (tool definitions, tool_use blocks, tool_result blocks)
-- [ ] Define 2 simple tools: `read_file` and `list_directory`
-- [ ] Implement tool dispatch: LLM returns tool_use -> your code executes it -> sends tool_result back
-- [ ] Handle the multi-turn tool loop (LLM may call multiple tools before responding)
+- [x] Learn Claude API's tool_use format (tool definitions, tool_use blocks, tool_result blocks)
+- [x] Define 2 simple tools: `read_file` and `list_directory`
+- [x] Implement tool dispatch: LLM returns tool_use -> your code executes it -> sends tool_result back
+- [x] Handle the multi-turn tool loop (LLM may call multiple tools before responding)
 
-**Deliverable:** `src/tools/` directory with working file-reading tools
+**Deliverable:** `src/tools/` directory with working file-reading tools ✅
 
 ---
 
@@ -55,24 +55,24 @@ Build the tool set that makes an agent useful for coding:
 | `ask_user` | Ask user for clarification | P1 |
 
 **Tasks:**
-- [ ] Implement each tool with proper input validation (Zod schemas)
-- [ ] Build a tool registry system for dynamic tool registration
-- [ ] Add proper error handling for each tool
-- [ ] Write unit tests for every tool
+- [x] Implement each tool with proper input validation (Zod schemas)
+- [x] Build a tool registry system for dynamic tool registration
+- [x] Add proper error handling for each tool
+- [x] Write unit tests for every tool (43 tests passing)
 
-**Deliverable:** Complete tool system with registry pattern
+**Deliverable:** Complete tool system with registry pattern ✅
 
 ### 2.2 Permission & Safety System
 
 Claude Code asks for permission before dangerous actions. This is critical.
 
 **Tasks:**
-- [ ] Classify tools by risk level: read-only vs write vs dangerous
-- [ ] Build a permission prompt system (auto-allow reads, confirm writes)
-- [ ] Implement command sandboxing basics (timeout, working directory restrictions)
-- [ ] Add a blocklist for dangerous commands (rm -rf /, etc.)
+- [x] Classify tools by risk level: read-only vs write vs dangerous
+- [x] Build a permission prompt system (auto-allow reads, confirm writes)
+- [x] Implement command sandboxing basics (timeout, working directory restrictions)
+- [x] Add a blocklist for dangerous commands (rm -rf /, etc.)
 
-**Deliverable:** `src/permissions/` - Permission system with risk classification
+**Deliverable:** `src/permissions/` - Permission system with risk classification ✅
 
 ---
 
