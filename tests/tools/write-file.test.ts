@@ -3,7 +3,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { writeFileTool } from "../../src/tools/write-file.js";
 
-const TEST_DIR = path.join(process.cwd(), ".test-tmp");
+const TEST_DIR = path.join(process.cwd(), ".test-tmp", "write-file");
 
 afterEach(() => {
   fs.rmSync(TEST_DIR, { recursive: true, force: true });

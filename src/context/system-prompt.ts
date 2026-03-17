@@ -72,6 +72,23 @@ function buildProjectContextSection(ctx: ProjectContext): string {
   return lines.join("\n");
 }
 
+function buildPlanningInstructions(): string {
+  return [
+    "## Multi-Step Reasoning",
+    "For complex tasks that require multiple steps:",
+    "1. Create a plan using a `## Plan: <goal>` heading followed by numbered steps.",
+    "2. Execute each step in order, adjusting as needed.",
+    "3. If a step fails, analyze the error and try a different approach.",
+    "4. Do not repeat the same failing action more than twice.",
+    "",
+    "### Self-Correction Rules",
+    "- If a tool call returns an error, re-read the error message carefully before retrying.",
+    "- If you are stuck, explain what you tried and ask the user for guidance.",
+    "- Never repeat the exact same tool call with identical parameters.",
+    "- After completing a plan step, briefly confirm what was accomplished.",
+  ].join("\n");
+}
+
 export function buildSystemPrompt(
   tools: Tool[],
   projectContext: ProjectContext | null,
@@ -89,6 +106,8 @@ export function buildSystemPrompt(
       sections.push(toolSection);
     }
   }
+
+  sections.push(buildPlanningInstructions());
 
   if (config.codeStyleRules) {
     sections.push(buildCodeStyleRules());

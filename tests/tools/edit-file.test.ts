@@ -3,7 +3,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { editFileTool } from "../../src/tools/edit-file.js";
 
-const TEST_DIR = path.join(process.cwd(), ".test-tmp");
+const TEST_DIR = path.join(process.cwd(), ".test-tmp", "edit-file");
 
 afterEach(() => {
   fs.rmSync(TEST_DIR, { recursive: true, force: true });

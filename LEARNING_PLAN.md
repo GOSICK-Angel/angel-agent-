@@ -115,25 +115,25 @@ Real projects have more code than fits in a context window.
 Agents must plan and execute complex tasks across multiple files.
 
 **Tasks:**
-- [ ] Implement plan-then-execute pattern (agent creates a plan, then follows it)
-- [ ] Add self-correction: when a tool fails, agent should retry or try alternative
-- [ ] Build a task tracking system (agent knows what it has done and what remains)
-- [ ] Handle the "agent loop" — prevent infinite loops and detect stuck states
+- [x] Implement plan-then-execute pattern (agent creates a plan, then follows it)
+- [x] Add self-correction: when a tool fails, agent should retry or try alternative
+- [x] Build a task tracking system (agent knows what it has done and what remains)
+- [x] Handle the "agent loop" — prevent infinite loops and detect stuck states
 
-**Deliverable:** Working multi-step task execution
+**Deliverable:** `src/reasoning/` - Task tracker + loop guard with 34 tests ✅
 
 ### 4.2 Streaming & UX
 
 Good UX is what separates a tool from a toy.
 
 **Tasks:**
-- [ ] Implement streaming token output (show text as it generates)
-- [ ] Show tool calls in a structured format (what tool, what args, what result)
-- [ ] Add progress indicators for long-running operations
-- [ ] Implement Ctrl+C handling for graceful interruption
-- [ ] Add colored terminal output (chalk/picocolors)
+- [x] Implement streaming token output (show text as it generates)
+- [x] Show tool calls in a structured format (what tool, what args, what result)
+- [x] Add progress indicators for long-running operations
+- [x] Implement Ctrl+C handling for graceful interruption
+- [x] Add colored terminal output (picocolors)
 
-**Deliverable:** Polished CLI experience with streaming
+**Deliverable:** `src/ui/` + `src/core/agent-loop-phase4.ts` - Polished CLI with streaming ✅
 
 ---
 
